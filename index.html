@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Expense Tracker</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>💰 Expense Tracker</h1>
+    <p>Track your spending with category and user relationships</p>
+  </header>
+
+  <main class="container">
+    <!-- ADD EXPENSE FORM -->
+    <div class="card">
+      <h2>Add Expense</h2>
+      <form id="expenseForm">
+
+        <div class="form-group">
+          <label>Expense Name:</label>
+          <input type="text" name="name" id="name" required style="text-transform: uppercase;">
+        </div>
+
+        <div class="form-group">
+          <label>Amount (₹):</label>
+          <input type="number" name="amount" id="amount" min="0" step="0.01" required>
+        </div>
+
+        <!-- SINGLE-SELECT DROPDOWN for user (changed as requested) -->
+        <div class="form-group">
+        <label>User:</label>
+        <select name="user" id="user" required>
+        <option value="">-- Select user or group --</option>
+        <option value="Ayushi">Ayushi</option>
+        <option value="Darshil">Darshil</option>
+        <option value="Jesal">Jesal</option>
+        <option value="Ayushi, Darshil">Ayushi & Darshil</option>
+        <option value="Darshil, Jesal">Darshil & Jesal</option>
+        <option value="Ayushi, Jesal">Ayushi & Jesal</option>
+        <option value="All">All (Ayushi, Darshil & Jesal)</option>
+        </select>
+        </div>
+
+        <div class="form-group">
+          <label>Category:</label>
+          <select name="category_id" id="category" required>
+            <option value="">--Select--</option>
+            <option value="Food">Food</option>
+            <option value="Travel">Travel</option>
+            <option value="Shopping">Shopping</option>
+            <option value="Others">Others</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Date:</label>
+          <input type="date" name="date" id="date" required>
+        </div>
+
+        <button type="submit" class="btn-primary">Add Expense</button>
+      </form>
+    </div>
+
+    <!-- EXPENSE HISTORY -->
+    <div class="card">
+      <h2>Expense History</h2>
+
+      <!-- FILTER BUTTONS -->
+      <!-- <div class="filter-buttons">
+        <button class="filter-btn" onclick="filterExpenses('all')">All</button>
+        <button class="filter-btn" onclick="filterExpenses('Ayushi,Darshil')">Ayushi & Darshil</button>
+        <button class="filter-btn" onclick="filterExpenses('Darshil,Jesal')">Darshil & Jesal</button>
+        <button class="filter-btn" onclick="filterExpenses('Ayushi,Jesal')">Ayushi & Jesal</button>
+      </div> -->
+
+      <p id="noExpenses" class="no-data">No expenses yet.</p>
+      <table id="expensesTable" style="width:100%; display:none;">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Expense</th>
+            <th>Split Amount (₹)</th>
+            <th>Category</th>
+            <th>User</th>
+            <th>Date</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="expensesBody"></tbody>
+      </table>
+    </div>
+
+    <!-- TOTAL SECTION -->
+    <div class="total-card">
+      <h3>Total: <span id="totalAmount">₹0.00</span></h3>
+    </div>
+
+    <!-- USER TOTAL SECTION -->
+    <div class="user-totals-card">
+      <h3>💼 Total Expense per User</h3>
+      <table id="userTotalsTable" style="width:100%; display:none;">
+        <thead>
+          <tr>
+            <th>User</th>
+            <th>Total (₹)</th>
+          </tr>
+        </thead>
+        <tbody id="userTotalsBody"></tbody>
+      </table>
+    </div>
+  </main>
+
+  <!-- MESSAGE BOX -->
+  <div id="messageBox" class="message-box"></div>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>Made with <span class="heart">❤️</span> by <strong>Ayushi Kadu</strong></p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
